@@ -4,12 +4,12 @@ ast-grep-pre-commit
 [![pre-commit](https://img.shields.io/badge/pre--commit-hook-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 ================
 
-
 Minimal git hook to run [ast-grep](https://github.com/ast-grep/ast-grep) based on the [pre-commit](https://github.com/pre-commit/pre-commit) framework.
 
 ## Using ast-grep-pre-commit with pre-commit
 
 Add this to your `.pre-commit-config.yaml`:
+
 ```
   - repo: https://github.com/boidolr/ast-grep-pre-commit
     rev: 0.45.1  # Use the ref you want to point at
@@ -19,7 +19,6 @@ Add this to your `.pre-commit-config.yaml`:
 
 Note that, by default, only rules with a severity of "error" will lead to the commit hook failing.
 If you wish to handle rules differently, set their error level in the rule configuration or via `--error`.
-
 
 ### Automatically execute rewrites
 
@@ -31,7 +30,6 @@ If you wish to handle rules differently, set their error level in the rule confi
         args: ["--update-all"]
 ```
 
-
 ### Provide explicit configuration
 
 ```
@@ -42,10 +40,22 @@ If you wish to handle rules differently, set their error level in the rule confi
         args: ["--config", "/some/path/sgconfig.yaml"]
 ```
 
+### Testing ast grep rules
+
+Add this to your `.pre-commit-config.yaml`:
+
+```
+  - repo: https://github.com/boidolr/ast-grep-pre-commit
+    rev: 0.44.1  # Use the ref you want to point at
+    hooks:
+      - id: ast-grep-rule-tests
+```
+
 ### Overwrite ast-grep version
 
 The hook version mirrors the version of ast-grep.
 If for any reason you want up- or downgrade the ast-grep version used by the hook, for example to get an update before the hook was published, you can do so:
+
 ```
   - repo: https://github.com/boidolr/ast-grep-pre-commit
     rev: 0.45.1
@@ -53,7 +63,6 @@ If for any reason you want up- or downgrade the ast-grep version used by the hoo
       - id: ast-grep
         additional_dependencies: ["@ast-grep/cli@0.38.1"]  # set the desired version
 ```
-
 
 ## How to write rules
 
